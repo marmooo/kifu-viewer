@@ -1,0 +1,118 @@
+<html>
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA&#45;142997649&#45;1"></script> -->
+    <!-- <script> -->
+    <!--   window.dataLayer = window.dataLayer || []; -->
+    <!--   function gtag(){dataLayer.push(arguments);} -->
+    <!--   gtag('js', new Date()); -->
+    <!--  -->
+    <!--   gtag('config', 'UA&#45;142997649&#45;1'); -->
+    <!-- </script> -->
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KifuViewer</title>
+    <meta name="description" content="JavaScriptで動く将棋の棋譜再生ライブラリです。">
+    <link rel="apple-touch-icon" sizes="180x180" href="/kifu-viewer/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/kifu-viewer/favicon/favicon-48x48.png">
+    <link rel="manifest" href="/kifu-viewer/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/kifu-viewer/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/kifu-viewer/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/kifu-viewer/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+    <style>
+      html[data-theme="dark"] { filter: invert(1) hue-rotate(180deg) brightness(1.5); }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand navbar-light">
+        <div class="container">
+          <a class="navbar-brand" href="/kifu-viewer/">KifuViewer</a>
+          <div class="navbar-nav">
+            <button title="ダークモード切替" onclick="toggleDarkMode()" class="ml-2 close">🌓</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="container">
+      <p>JavaScript で動く将棋の棋譜再生ライブラリです。</p>
+      <div class="text-center">
+        <script id="example-kif" type="kif">
+手合割：平手　　
+手数----指手---------消費時間--
+   1 ７六歩(77)   ( 0:01/00:00:01)
+   2 ３四歩(33)   ( 0:01/00:00:01)
+   3 ２六歩(27)   ( 0:01/00:00:02)
+   4 ８四歩(83)   ( 0:02/00:00:03)
+   5 ２五歩(26)   ( 0:01/00:00:03)
+   6 ８五歩(84)   ( 0:01/00:00:04)
+   7 ７八金(69)   ( 0:02/00:00:05)
+   8 ３二金(41)   ( 0:01/00:00:05)
+   9 ２四歩(25)   ( 0:02/00:00:07)
+  10 同　歩(23)   ( 0:00/00:00:05)
+  11 同　飛(28)   ( 0:02/00:00:09)
+  12 ８六歩(85)   ( 0:01/00:00:06)
+  13 同　歩(87)   ( 0:01/00:00:10)
+  14 同　飛(82)   ( 0:02/00:00:08)
+  15 ３四飛(24)   ( 0:01/00:00:11)
+  16 ３三角(22)   ( 0:01/00:00:09)
+  17 ５八玉(59)   ( 0:02/00:00:13)
+  18 ２二銀(31)   ( 0:03/00:00:12)
+  19 ３六歩(37)   ( 0:04/00:00:17)
+  20 中断         ( 1:54/00:02:06)
+まで19手で中断
+          </script>
+          <svg id="example" xmlns="http://www.w3.org/2000/svg" width="300" height="405" viewBox="0,0,400,540"></svg>
+      </div>
+      <div class="row pt-4">
+        <div class="col-sm">
+          <h4>特徴</h4>
+          <ul>
+            <li>Vanilla JS</li>
+            <li>高速 &amp; 軽量 (21KB)</li>
+            <li>シンプル &amp; カスタマイズ可能な UI</li>
+            <li>少ない外部依存
+              <ul>
+                <li><a href="https://material.io/icons/">Material Icons</a>
+                  + <a href="https://getbootstrap.jp/">Bootstrap</a> のみ
+                </li>
+                <li>カスタマイズで依存ゼロに変更可能</li>
+              </ul>
+          </ul>
+        </div>
+        <div class="col-sm">
+          <h4>利用例</h4>
+          <ol>
+            <li><a href="https://github.com/marmooo/kifu-viewer">基本的な利用方法</a> (GitHub)</li>
+            <li><a href="/kifu-viewer/inline.html">インライン棋譜</a></li>
+            <li><a href="/kifu-viewer/external.html">棋譜ファイル読込</a></li>
+            <li><a href="/kifu-viewer/end.html">終端表示例</a></li>
+            <li><a href="/kifu-viewer/kyokumenzu.html">局面図からの再生</a></li>
+            <li><a href="/kifu-viewer/comment.html">コメント表示</a></li>
+            <li><a href="/kifu-viewer/branch.html">変化分岐</a></li>
+            <li><a href="/kifu-viewer/misc.html">駒落ち, 最適化, etc.</a></li>
+          </ol>
+        </div>
+      </div>
+    </main>
+    <footer class="pt-4 alert text-center">
+      <div class="pt-3">
+        <a class="px-1" href="/">Home</a>
+        <a class="px-1" href="/terms/">Terms</a>
+        <a class="px-1" href="https://github.com/marmooo/kifu-viewer">Contact</a>
+      </div>
+      <div class="text-muted">&copy; <a href="https://github.com/marmooo">marmooo</a>
+      </div>
+    </footer>
+    <script src="index.js"></script>
+    <script src="kifu-viewer.min.js"></script>
+    <script>
+      new KifuViewer(document.getElementById('example'), { start:11 })
+        .loadString(document.getElementById('example-kif').textContent);
+    </script>
+  </body>
+</html>

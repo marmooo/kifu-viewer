@@ -1,0 +1,27 @@
+{
+  "name": "kifu-viwer",
+  "version": "0.0.1",
+  "description": "Kifu Viewer for Shogi.",
+  "main": "dist/kifu-viewer.min.js",
+  "directories": {
+    "example": "examples"
+  },
+  "dependencies": {
+    "esbuild": "^0.8.32"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "esbuild src/kifu-viewer.js --minify --charset=utf8 --outfile=dist/kifu-viewer.min.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marmooo/kifu-viewer.git"
+  },
+  "author": "marmooo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/marmooo/kifu-viewer/issues"
+  },
+  "homepage": "https://github.com/marmooo/kifu-viewer"
+}

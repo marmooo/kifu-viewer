@@ -1,0 +1,92 @@
+<html>
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA&#45;142997649&#45;1"></script> -->
+    <!-- <script> -->
+    <!--   window.dataLayer = window.dataLayer || []; -->
+    <!--   function gtag(){dataLayer.push(arguments);} -->
+    <!--   gtag('js', new Date()); -->
+    <!--  -->
+    <!--   gtag('config', 'UA&#45;142997649&#45;1'); -->
+    <!-- </script> -->
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KifuViewer</title>
+    <meta name="description" content="局面図からの再生: KifuViewer">
+    <link rel="apple-touch-icon" sizes="180x180" href="/kifu-viewer/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/kifu-viewer/favicon/favicon-48x48.png">
+    <link rel="manifest" href="/kifu-viewer/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/kifu-viewer/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/kifu-viewer/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/kifu-viewer/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+    <style>
+      html[data-theme="dark"] { filter: invert(1) hue-rotate(180deg) brightness(1.5); }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand navbar-light">
+        <div class="container">
+          <a class="navbar-brand" href="/kifu-viewer/">KifuViewer</a>
+          <div class="navbar-nav">
+            <button title="ダークモード切替" onclick="toggleDarkMode()" class="ml-2 close">🌓</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+  <body>
+    <main class="container text-center">
+      <div class="row">
+        <div class="col-sm">
+          <h4 class="pt-4">平手の局面図</h4>
+          <div tabindex="-1">
+            <svg id="board1" xmlns="http://www.w3.org/2000/svg" viewBox="0,0,400,540"></svg>
+          </div>
+        </div>
+        <div class="col-sm">
+          <h4 class="pt-4">2枚落ちの局面図</h4>
+          <div tabindex="-1">
+            <svg id="board2" xmlns="http://www.w3.org/2000/svg" viewBox="0,0,400,540"></svg>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm">
+          <h4 class="pt-4">局面図のみ</h4>
+          <div tabindex="-1">
+            <svg id="board3" xmlns="http://www.w3.org/2000/svg" viewBox="0,0,400,540"></svg>
+          </div>
+        </div>
+        <div class="col-sm">
+          <h4 class="pt-4">局面図 (手数0)</h4>
+          <div tabindex="-1">
+            <svg id="board4" xmlns="http://www.w3.org/2000/svg" viewBox="0,0,400,540"></svg>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="pt-4 alert text-center">
+      <div class="pt-3">
+        <a class="px-1" href="/">Home</a>
+        <a class="px-1" href="/terms/">Terms</a>
+        <a class="px-1" href="https://github.com/marmooo/kifu-viewer">Contact</a>
+      </div>
+      <div class="text-muted">&copy; <a href="https://github.com/marmooo">marmooo</a>
+      </div>
+    </footer>
+    <script src="index.js"></script>
+    <script src="kifu-viewer.min.js"></script>
+    <script>
+      new KifuViewer(document.getElementById('board1')).load('kif/test-kyokumenzu1.kif', 'Shift_JIS');
+      new KifuViewer(document.getElementById('board2')).load('kif/test-kyokumenzu2.kif', 'Shift_JIS');
+      new KifuViewer(document.getElementById('board3'), {
+        buttons: 'none' }).load('kif/test-kyokumenzu3.kif');
+      new KifuViewer(document.getElementById('board4'), {
+        buttons: 'none' }).load('kif/test-kyokumenzu4.kif');
+    </script>
+  </body>
+</html>
