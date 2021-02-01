@@ -40,7 +40,7 @@
     </header>
     <main class="container">
       <p>JavaScript で動く将棋の棋譜再生ライブラリです。</p>
-      <div class="text-center">
+      <div class="text-center" tabindex="-1">
         <script id="example-kif" type="kif">
 手合割：平手　　
 手数----指手---------消費時間--
@@ -111,7 +111,7 @@
     <script src="index.js"></script>
     <script src="kifu-viewer.min.js"></script>
     <script>
-      new KifuViewer(document.getElementById('example'), { start:11 })
+      new KifuViewer(document.getElementById('example'), { keybinds:window, start:11 })
         .loadString(document.getElementById('example-kif').textContent);
     </script>
   </body>
