@@ -24,7 +24,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
     <style>
-      html[data-theme="dark"] { filter: invert(1) hue-rotate(180deg); background-color:black; }
+      html[data-theme="dark"] { filter: invert(1) hue-rotate(180deg); }
+      @-moz-document url-prefix() { html[data-theme="dark"] { background-color:black; } }
     </style>
   </head>
   <body>
