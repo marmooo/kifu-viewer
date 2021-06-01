@@ -93,8 +93,15 @@
 
       var viewer = new KifuViewer(document.getElementById('board'), {
         onMove: function(data) {
-          if (data.手数 == 0) {
-            viewer.data.変化 = 0;
+          const 変化手数 = data.全指し手.変化手数;
+          if (viewer.data.変化 != 0) {
+            const 変化位置 = 変化手数[viewer.data.変化 - 1];
+            console.log(変化位置);
+            if (変化位置 > data.手数) {
+              const arr = 変化手数.slice(0, viewer.data.変化).reverse();
+              const pos = arr.find(x => x < 変化位置);
+              viewer.data.変化 = pos ? pos : 0;
+            }
           }
           showBranches(data, branches);
         }
