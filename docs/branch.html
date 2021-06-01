@@ -64,28 +64,37 @@
     <script src="index.js"></script>
     <script src="kifu-viewer.min.js"></script>
     <script>
+      function addBranch(data, i, 変化位置) {
+        const 変化 = data.全指し手[i];
+        const 次の手 = 変化[変化位置];
+        var li = document.createElement('li');
+        li.textContent = 次の手.手番 + 次の手.手;
+        li.onclick = function() {
+          viewer.board.parentNode.focus();  // set keybinds
+          viewer.data.変化 = i;
+          viewer.next();
+        }
+        branches.appendChild(li)
+      }
+
       function showBranches(data, branches) {
         while (branches.firstChild) {
           branches.removeChild(branches.firstChild);
         }
         const 変化手数 = data.全指し手.変化手数;
-        for (let i = 0; i < 変化手数.length; i++) {
+        for (let i = viewer.data.変化; i < 変化手数.length; i++) {
           if (変化手数[i] == data.手数 + 1) {
-            const 変化 = data.全指し手[i + 1];
-            const 次の手 = 変化[変化手数[i]];
-            var li = document.createElement('li');
-            li.textContent = 次の手.手番 + 次の手.手;
-            li.onclick = function() {
-              viewer.board.parentNode.focus();  // set keybinds
-              viewer.data.変化 = i + 1;
-              viewer.next();
-            }
-            branches.appendChild(li)
+            addBranch(data, 0, 変化手数[i]);
+            addBranch(data, i + 1, 変化手数[i]);
           }
         }
       }
+
       var viewer = new KifuViewer(document.getElementById('board'), {
         onMove: function(data) {
+          if (data.手数 == 0) {
+            viewer.data.変化 = 0;
+          }
           showBranches(data, branches);
         }
       });
