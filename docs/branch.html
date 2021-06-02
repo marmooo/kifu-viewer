@@ -83,7 +83,7 @@
           branches.removeChild(branches.firstChild);
         }
         const 変化手数 = data.全指し手.変化手数;
-        const arr = 変化手数.concat().reverse();
+        const arr = 変化手数.slice(viewer.data.変化).reverse();
         const 次手数 = data.手数 + 1;
         const pos1 = arr.findIndex(x => x == 次手数);
         if (pos1 >= 0) {
