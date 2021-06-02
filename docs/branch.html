@@ -83,10 +83,18 @@
           branches.removeChild(branches.firstChild);
         }
         const 変化手数 = data.全指し手.変化手数;
-        for (let i = viewer.data.変化; i < 変化手数.length; i++) {
-          if (変化手数[i] == data.手数 + 1) {
-            addBranch(data, 0, 変化手数[i]);
-            addBranch(data, i + 1, 変化手数[i]);
+        const arr = 変化手数.concat().reverse();
+        const 次手数 = data.手数 + 1;
+        const pos1 = arr.findIndex(x => x == 次手数);
+        if (pos1 >= 0) {
+          const pos2 = arr.slice(pos1).findIndex(x => x < 次手数) - 1;
+          if (pos2 >= 0) {
+            arr.slice(pos1, pos1 + pos2).reverse().forEach(x => {
+              addBranch(data, arr.length - x, 次手数);
+            });
+          } else {
+            addBranch(data, 0, 次手数);
+            addBranch(data, arr.length - pos1, 次手数);
           }
         }
       }
@@ -96,7 +104,6 @@
           const 変化手数 = data.全指し手.変化手数;
           if (viewer.data.変化 != 0) {
             const 変化位置 = 変化手数[viewer.data.変化 - 1];
-            console.log(変化位置);
             if (変化位置 > data.手数) {
               const arr = 変化手数.slice(0, viewer.data.変化).reverse();
               const pos = arr.find(x => x < 変化位置);
