@@ -1,5 +1,5 @@
 {
-  "name": "kifu-viwer",
+  "name": "kifu-viewer",
   "version": "0.0.1",
   "description": "Kifu Viewer for Shogi.",
   "main": "dist/kifu-viewer.min.js",
@@ -7,9 +7,8 @@
     "example": "examples"
   },
   "dependencies": {
-    "esbuild": "^0.12.17"
+    "esbuild": "^0.13.2"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "esbuild src/kifu-viewer.js --minify --charset=utf8 --outfile=dist/kifu-viewer.min.js"
