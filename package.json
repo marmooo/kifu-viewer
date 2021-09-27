@@ -1,6 +1,6 @@
 {
   "name": "kifu-viewer",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Kifu Viewer for Shogi.",
   "main": "dist/kifu-viewer.min.js",
   "directories": {
