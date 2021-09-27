@@ -1,12 +1,16 @@
 # kifu-viewer
+
 JavaScriptで動く将棋の棋譜再生ライブラリです。
 
 ## Demo
+
 - [マニュアル](https://marmooo.github.io/kifu-viewer/)
 - [将棋びぎなーず](https://marmooo.github.io/shogi-beginners/)
 
 ## Usage
+
 from string
+
 ```
 <head>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -25,6 +29,7 @@ from string
 ```
 
 from kif file
+
 ```
 <head>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -42,6 +47,7 @@ from kif file
 ```
 
 custom options
+
 ```
 const viewer = KifuViewer(
   document.getElementById('board'), {
@@ -56,14 +62,16 @@ const viewer = KifuViewer(
 ```
 
 ## Build
+
 ```
 npm install kifu-viewer
 npm run build
 ```
 
 ## Attribution
+
 - [kifPlayer](https://shogi-study.com/ブラウザ棋譜再生ツール「kifPlayer」/) (original)
 
 ## License
-MIT
 
+MIT
