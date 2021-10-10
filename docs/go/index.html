@@ -11,7 +11,7 @@
     </script>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>KifuViewer</title>
+    <title>KifuViewer GO</title>
     <meta name="description" content="JavaScriptで動く将棋の棋譜再生ライブラリです。">
     <link rel="apple-touch-icon" sizes="180x180" href="/kifu-viewer/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="48x48" href="/kifu-viewer/favicon/favicon-48x48.png">
@@ -24,6 +24,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
     <style>
+      #viewer { object-fit:contain; width:95vw; height:calc(100vh - 150px); }
+      *:focus { outline:none; }
       button { touch-action:manipulation; }
       html[data-theme="dark"] { filter: invert(1) hue-rotate(180deg); }
       @-moz-document url-prefix() { html[data-theme="dark"] { background-color:black; } }
@@ -35,19 +37,29 @@
         <div class="container flex-wrap">
           <a class="navbar-brand" href="/kifu-viewer/">
             <img src="/kifu-viewer/favicon/original.svg" width="32" height="32">
-            KifuViewer
+            KifuViewer GO
           </a>
           <div class="navbar-nav">
-            <button title="ダークモード切替" id="toggleDarkMode" class="fs-4 btn p-0">🌓</button>
+            <button title="棋譜を選択" id="selectKif" class="btn p-0" data-bs-toggle="tooltip">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 20 20">
+                <path d="M17 12v5H3v-5H1v5a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5z"/><path d="M15 7l-5-6-5 6h4v8h2V7h4z"/>
+              </svg>
+              <input id="inputKif" type="file" accept=".kif" id="uploadFile" hidden>
+            </button>
+            <button title="クリップボードから読み込む" id="clipboard" class="btn p-0 ms-1" data-bs-toggle="tooltip">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 14 16">
+                <path fill-rule="evenodd" d="M2 13h4v1H2v-1zm5-6H2v1h5V7zm2 3V8l-3 3 3 3v-2h5v-2H9zM4.5 9H2v1h2.5V9zM2 12h2.5v-1H2v1zm9 1h1v2c-.02.28-.11.52-.3.7-.19.18-.42.28-.7.3H1c-.55 0-1-.45-1-1V4c0-.55.45-1 1-1h3c0-1.11.89-2 2-2 1.11 0 2 .89 2 2h3c.55 0 1 .45 1 1v5h-1V6H1v9h10v-2zM2 5h8c0-.55-.45-1-1-1H8c-.55 0-1-.45-1-1s-.45-1-1-1-1 .45-1 1-.45 1-1 1H3c-.55 0-1 .45-1 1z"></path>
+              </svg>
+            </button>
+            <button title="ダークモード切替" id="toggleDarkMode" class="fs-4 btn p-0 ms-1">🌓</button>
           </div>
         </div>
       </nav>
     </header>
-    <main class="container">
-      <p>JavaScript で動く将棋の棋譜再生ライブラリです。</p>
+    <main id="container" class="container-fluid">
       <div class="text-center" tabindex="-1">
-        <script id="example-kif" type="kif">
-手合割：平手　　
+        <script id="kif" type="kif">
+          手合割：平手　　
 手数----指手---------消費時間--
    1 ７六歩(77)   ( 0:01/00:00:01)
    2 ３四歩(33)   ( 0:01/00:00:01)
@@ -70,39 +82,8 @@
   19 ３六歩(37)   ( 0:04/00:00:17)
   20 中断         ( 1:54/00:02:06)
 まで19手で中断
-          </script>
-          <svg id="example" xmlns="http://www.w3.org/2000/svg" width="300" height="405" viewBox="0,0,400,540"></svg>
-      </div>
-      <div class="row pt-4">
-        <div class="col-sm">
-          <h4>特徴</h4>
-          <ul>
-            <li>Vanilla JS</li>
-            <li>高速 &amp; 軽量 (21KB)</li>
-            <li>シンプル &amp; カスタマイズ可能な UI</li>
-            <li>少ない外部依存
-              <ul>
-                <li><a href="https://material.io/icons/">Material Icons</a>
-                  + <a href="https://getbootstrap.jp/">Bootstrap</a> のみ
-                </li>
-                <li>カスタマイズで依存ゼロに変更可能</li>
-              </ul>
-          </ul>
-        </div>
-        <div class="col-sm">
-          <h4>利用例</h4>
-          <ol>
-            <li><a href="https://github.com/marmooo/kifu-viewer">基本的な利用方法</a> (GitHub)</li>
-            <li><a href="/kifu-viewer/inline.html">インライン棋譜</a></li>
-            <li><a href="/kifu-viewer/external.html">棋譜ファイル読込</a></li>
-            <li><a href="/kifu-viewer/end.html">終端表示例</a></li>
-            <li><a href="/kifu-viewer/kyokumenzu.html">局面図からの再生</a></li>
-            <li><a href="/kifu-viewer/comment.html">コメント表示</a></li>
-            <li><a href="/kifu-viewer/branch.html">変化分岐</a></li>
-            <li><a href="/kifu-viewer/misc.html">駒落ち, 最適化, etc.</a></li>
-            <li><a href="/kifu-viewer/go/">棋譜再生アプリ: KifuViewer GO</a></li>
-          </ol>
-        </div>
+        </script>
+        <svg id="viewer" class="img-fluid" xmlns="http://www.w3.org/2000/svg" width="300" height="405" viewBox="0,0,400,540"></svg>
       </div>
     </main>
     <footer class="pt-4 alert text-center">
@@ -114,11 +95,8 @@
       <div class="text-muted">&copy; <a href="https://github.com/marmooo">marmooo</a>
       </div>
     </footer>
-    <script src="index.js"></script>
-    <script src="kifu-viewer.min.js"></script>
-    <script>
-      new KifuViewer(document.getElementById('example'), { keybinds:window, start:11 })
-        .loadString(document.getElementById('example-kif').textContent);
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/encoding-japanese@1.0.30/encoding.min.js" integrity="sha256-3N1q3S/Cg/TL0ER062kNT2VYIsHLzEqymlj2dEXYhXI=" crossorigin="anonymous"></script>
+    <script src="/kifu-viewer/kifu-viewer.min.js"></script>
+    <script src="/kifu-viewer/go/go.js"></script>
   </body>
 </html>
