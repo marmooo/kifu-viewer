@@ -19,7 +19,7 @@ function toggleDarkMode() {
 function updateViewer(text) {
   const viewer = new KifuViewer(viewerNode, { keybinds: window });
   viewer.loadString(text, function () {
-    viewer.指し手初期化();
+    viewer.first();
     viewer.board.nextElementSibling.nextElementSibling.remove();
   });
 }
