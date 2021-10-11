@@ -23,25 +23,32 @@ class KifuViewer {
 </div>`;
   }
 
+  defaultKeybinds(event) {
+    switch (event.key) {
+      case "ArrowUp":
+        this.first();
+        break;
+      case "ArrowDown":
+        this.last();
+        break;
+      case "ArrowLeft":
+        this.prev();
+        break;
+      case "ArrowRight":
+        this.next();
+        break;
+    }
+  }
+
   loadKeybinds() {
     // https://allyjs.io/data-tables/focusable.html
     // <svg tabindex="-1"> は効かないケースがあるので親ノードに対して適用
-    this.options.keybinds.addEventListener("keydown", (e) => {
-      switch (e.key) {
-        case "ArrowUp":
-          this.first();
-          break;
-        case "ArrowDown":
-          this.last();
-          break;
-        case "ArrowLeft":
-          this.prev();
-          break;
-        case "ArrowRight":
-          this.next();
-          break;
-      }
-    });
+    this.keybinds = (event) => { this.defaultKeybinds(event) };
+    this.options.keybinds.addEventListener("keydown", this.keybinds);
+  }
+
+  removeKeybinds() {
+    this.options.keybinds.removeEventListener("keydown", this.keybinds);
   }
 
   loadButtons() {
