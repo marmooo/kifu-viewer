@@ -17,7 +17,7 @@ from string
 </head>
 <div tabindex="-1"><!-- for keybinds -->
   <svg id="board" xmlns="http://www.w3.org/2000/svg" viewBox="0,0,400,540"></svg>
-  <script id="kif" type="kif">
+  <script id="kif" type="text/plain">
     // embed kif data
   </script>
 </div>
