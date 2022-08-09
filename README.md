@@ -15,7 +15,7 @@ from string
 <head>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-<div tabindex="-1"><!-- for keybinds -->
+<div class="notranslate" tabindex="-1"><!-- for keybinds -->
   <svg id="board" xmlns="http://www.w3.org/2000/svg" viewBox="0,0,400,540"></svg>
   <script id="kif" type="text/plain">
     // embed kif data
@@ -34,7 +34,7 @@ from kif file
 <head>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-<div tabindex="-1"><!-- for keybinds -->
+<div class="notranslate" tabindex="-1"><!-- for keybinds -->
   <svg id="board" xmlns="http://www.w3.org/2000/svg" viewBox="0,0,400,540"></svg>
 </div>
 <script src="kifu-viewer.min.js"></script>
