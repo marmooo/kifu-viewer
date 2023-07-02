@@ -19,7 +19,7 @@ function toggleDarkMode() {
 function updateViewer(text) {
   viewer.removeKeybinds();
   viewer = new KifuViewer(board, { keybinds: window });
-  viewer.loadString(text, function () {
+  viewer.loadString(text, () => {
     viewer.first();
     viewer.board.nextElementSibling.nextElementSibling.remove();
   });
@@ -40,10 +40,10 @@ viewer.loadString(document.getElementById("kif").textContent);
 
 document.getElementById("toggleDarkMode").onclick = toggleDarkMode;
 document.getElementById("clipboard").onclick = loadClipboardKif;
-document.getElementById("selectKif").onclick = function () {
+document.getElementById("selectKif").onclick = () => {
   document.getElementById("inputKif").click();
 };
-document.getElementById("inputKif").onchange = function (event) {
+document.getElementById("inputKif").onchange = (event) => {
   const file = event.target.files[0];
   const reader = new FileReader();
   reader.onload = () => {
