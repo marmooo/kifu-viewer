@@ -1,24 +1,24 @@
-const viewerNode = document.getElementById("viewer");
+const board = document.getElementById("board");
 
 function loadConfig() {
   if (localStorage.getItem("darkMode") == 1) {
-    document.documentElement.dataset.theme = "dark";
+    document.documentElement.setAttribute("data-bs-theme", "dark");
   }
 }
 
 function toggleDarkMode() {
   if (localStorage.getItem("darkMode") == 1) {
     localStorage.setItem("darkMode", 0);
-    delete document.documentElement.dataset.theme;
+    document.documentElement.setAttribute("data-bs-theme", "light");
   } else {
     localStorage.setItem("darkMode", 1);
-    document.documentElement.dataset.theme = "dark";
+    document.documentElement.setAttribute("data-bs-theme", "dark");
   }
 }
 
 function updateViewer(text) {
   viewer.removeKeybinds();
-  viewer = new KifuViewer(viewerNode, { keybinds: window });
+  viewer = new KifuViewer(board, { keybinds: window });
   viewer.loadString(text, function () {
     viewer.first();
     viewer.board.nextElementSibling.nextElementSibling.remove();
@@ -32,7 +32,7 @@ function loadClipboardKif() {
 }
 
 loadConfig();
-let viewer = new KifuViewer(viewerNode, {
+let viewer = new KifuViewer(board, {
   keybinds: window,
   start: 11,
 });

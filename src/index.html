@@ -28,13 +28,13 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" media="print" onload="this.media='all';this.onload=null;">
     <style>
       button { touch-action:manipulation; }
-      html[data-theme="dark"] { filter: invert(1) hue-rotate(180deg); }
-      @-moz-document url-prefix() { html[data-theme="dark"] { background-color:black; } }
+      html[data-bs-theme="dark"] .navbar-brand > img { filter: invert(1) hue-rotate(180deg); }
+      html[data-bs-theme="dark"] #board { filter: invert(1) hue-rotate(180deg); }
     </style>
   </head>
   <body>
     <header>
-      <nav class="navbar navbar-expand navbar-light">
+      <nav class="navbar navbar-expand">
         <div class="container flex-wrap">
           <a class="navbar-brand" href="/kifu-viewer/">
             <img alt="KifuViewer" src="/kifu-viewer/favicon/favicon.svg" width="32" height="32">
@@ -77,7 +77,7 @@
   20 中断         ( 1:54/00:02:06)
 まで19手で中断
           </script>
-          <svg id="example" xmlns="http://www.w3.org/2000/svg" width="300" height="405" viewBox="0,0,400,540"></svg>
+          <svg id="board" xmlns="http://www.w3.org/2000/svg" width="300" height="405" viewBox="0,0,400,540"></svg>
       </div>
       <div class="row pt-4">
         <div class="col-sm">
@@ -124,7 +124,7 @@
     <script src="index.js"></script>
     <script src="kifu-viewer.js"></script>
     <script>
-      new KifuViewer(document.getElementById('example'), { keybinds:window, start:11 })
+      new KifuViewer(document.getElementById('board'), { keybinds:window, start:11 })
         .loadString(document.getElementById('example-kif').textContent);
     </script>
   </body>

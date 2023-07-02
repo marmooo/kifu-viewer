@@ -22,14 +22,14 @@
     <style>
       #board { max-width:100vw; max-height:calc(100vh - 120px); }
       button { touch-action:manipulation; }
-      html[data-theme="dark"] { filter: invert(1) hue-rotate(180deg); }
-      @-moz-document url-prefix() { html[data-theme="dark"] { background-color:black; } }
+      html[data-bs-theme="dark"] .navbar-brand > img { filter: invert(1) hue-rotate(180deg); }
+      html[data-bs-theme="dark"] #board { filter: invert(1) hue-rotate(180deg); }
     </style>
   </head>
   <body>
     <header>
       <nav class="navbar navbar-expand navbar-light">
-        <div class="container flex-wrap">
+        <div class="container flex-wap">
           <a class="navbar-brand" href="/kifu-viewer/">
             <img alt="KifuViewer" src="/kifu-viewer/favicon/favicon.svg" width="32" height="32">
             KifuViewer
