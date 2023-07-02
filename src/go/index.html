@@ -21,7 +21,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" media="print" onload="this.media='all';this.onload=null;">
     <style>
       #board { object-fit:contain; width:95vw; height:calc(100vh - 150px); }
-      *:focus { outline:none; }
       button { touch-action:manipulation; }
       html[data-bs-theme="dark"] .navbar-brand > img { filter: invert(1) hue-rotate(180deg); }
       html[data-bs-theme="dark"] #board { filter: invert(1) hue-rotate(180deg); }
@@ -56,7 +55,7 @@
       <noscript>
         <div class="alert alert-warning">JavaScript を ON にしてください</div>
       </noscript>
-      <div class="text-center" tabindex="-1">
+      <div class="text-center">
         <script id="kif" type="text/plain">
           手合割：平手　　
 手数----指手---------消費時間--
