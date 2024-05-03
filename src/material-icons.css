@@ -3,7 +3,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: block; /* fixed */
-  src: url(material-icons.woff2) format("woff2");
+  src: url(/kifu-viewer/material-icons.woff2) format("woff2");
 }
 
 .material-icons {
